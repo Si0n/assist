@@ -1,0 +1,29 @@
+{
+  "name": "sion/assistant",
+  "description": "Implementing some features",
+  "homepage": "http://grodas.com.ua/",
+  "keywords": [
+    "Zoho",
+    "Dropbox",
+    "File"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sergey Drozh",
+      "email": "sionix1@gmail.com",
+      "homepage": "https://github.com/Si0n"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.1",
+    "kunalvarma05/dropbox-php-sdk": "^0.2.1",
+    "phpoffice/phpword": "^0.14.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "assist\\": "src/",
+      "assist\\model" : "src/Model"
+    }
+  }
+}
