@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siont
+ * User: sion
  * Date: 10.02.2018
  * Time: 11:30
  */
@@ -98,13 +98,14 @@ class MysqlModel {
 	/**
 	 * @param array $array
 	 * @param string $glue
+	 * @param string $wrapper
 	 * @return string
 	 */
-	public function arrayToArguments(array $array, $glue = ',') {
+	public function arrayToArguments(array $array, $glue = ',', $wrapper = "'") {
 		if (empty($array)) return '';
-		return implode($glue, array_reduce($array, function ($carry, $item) {
+		return implode($glue, array_reduce($array, function ($carry, $item) use ($wrapper) {
 			if (is_null($carry)) $carry = [];
-			$carry[] = "'{$this->escape($item)}'";
+			$carry[] = "{$wrapper}{$this->escape($item)}{$wrapper}";
 			return $carry;
 		}));
 	}
