@@ -11,7 +11,7 @@ namespace assist;
 
 class Assist {
 
-	private static $modelNamespaces = ['Assist\\model\\'];
+	private static $modelNamespaces = ['\\assist\\model\\'];
 	protected static $models = [];
 
 
