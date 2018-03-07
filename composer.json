@@ -23,7 +23,7 @@
   "autoload": {
     "psr-4": {
       "assist\\": "src/",
-      "assist\\model" : "src/Model"
+      "assist\\model\\" : "src/Model"
     }
   }
 }
