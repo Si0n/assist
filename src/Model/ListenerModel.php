@@ -42,8 +42,8 @@ class ListenerModel extends Model {
 
 	public function listen() {
 		if ($args = $this->detectCLI()) $_GET = $args;
-		if (empty($_GET) && $this->index_callback && is_callable($this->index_callback)) {
-			call_user_func($this->index_callback->bindTo($this));
+		if (empty($_GET) && $this->index_callback) {
+			call_user_func($this->index_callback);
 		} else {
 			foreach ($this->callbacks as $key => $data) {
 				$callback = $this->callbacks[$key]['callback'];
@@ -76,30 +76,23 @@ class ListenerModel extends Model {
 						}
 					}
 					if ($is_no_error) {
-						if (is_callable($callback)) {
-							call_user_func($callback->bindTo($this), $parameters);
-						}
+						call_user_func($callback, $parameters);
 					}
 					if (!$is_no_error && !empty(array_filter($parameters, function ($el) {
 							return !is_null($el);
 						}))) {
 						foreach ($parameters as $param_key => $param_value) {
 							if (is_null($param_value)) {
-								if (is_callable($callback_error)) {
-									call_user_func($callback_error->bindTo($this), $param_key);
-								}
+								call_user_func($callback_error, $param_key);
 							}
 						}
 					}
 				} else {
 					if (isset($_GET[$data['parameter']]) || isset($_POST[$data['parameter']])) {
-						$parameter = isset($_GET[$data['parameter']]) ? $_GET[$data['parameter']] : $_POST[$data['parameter']];
-						if (is_callable($callback)) {
-							call_user_func($callback->bindTo($this), $parameter);
-						}
+						call_user_func($callback, isset($_GET[$data['parameter']]) ? $_GET[$data['parameter']] : $_POST[$data['parameter']]);
 					} else {
-						if ($callback_error && is_callable($callback_error)) {
-							call_user_func($callback_error->bindTo($this), $data['parameter']);
+						if ($callback_error) {
+							call_user_func($callback_error, $data['parameter']);
 						}
 					}
 				}
