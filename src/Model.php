@@ -14,6 +14,7 @@ namespace assist;
  */
 class Model {
 	private static $_instance;
+	private $_attributes = [];
 
 	/**
 	 * Model constructor.
@@ -41,7 +42,11 @@ class Model {
 	 * @return null
 	 */
 	public function __get($name) {
-		return $this->$name ?? null;
+		if (property_exists($this, $name)) {
+			return $this->$name;
+		} else {
+			return $this->_attributes[$name] ?? null;
+		}
 	}
 
 	/**
@@ -49,8 +54,13 @@ class Model {
 	 * @param $value
 	 */
 	public function __set($name, $value) {
-		$this->$name = $value;
+		if (property_exists($this, $name)) {
+			$this->$name = $value;
+		} else {
+			$this->_attributes[$name] = $value;
+		}
 	}
 
-	final private function __clone() {}
+	final private function __clone() {
+	}
 }
