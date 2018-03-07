@@ -37,4 +37,8 @@ class Assist {
 	public static function addModelNamespace($namespace) {
 		self::$modelNamespaces[] = $namespace;
 	}
+
+	public function __callStatic($name, $arguments) {
+		return !empty(self::$models[$name]) ? self::$models[$name] : null;
+	}
 }
