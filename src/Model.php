@@ -33,8 +33,8 @@ class Model {
 	 * @return Model
 	 */
 	public static function getInstance($properties = null) {
-		if (!self::$_instance) self::$_instance = new self($properties);
-		return self::$_instance;
+		if (!static::$_instance) static::$_instance = new static($properties);
+		return static::$_instance;
 	}
 
 	/**
