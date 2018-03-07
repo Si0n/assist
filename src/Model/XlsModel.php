@@ -9,7 +9,9 @@
 namespace assist\model;
 
 
-class XlsModel {
+use assist\Model;
+
+class XlsModel extends Model {
 
 	public $xls;
 	public $_activeSheets = [];

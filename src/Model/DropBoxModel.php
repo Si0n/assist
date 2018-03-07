@@ -8,13 +8,14 @@
 
 namespace assist\model;
 
+use assist\Model;
 use GuzzleHttp\Exception\ClientException;
 use Kunnu\Dropbox\DropboxApp;
 use Kunnu\Dropbox\DropboxFile;
 use Kunnu\Dropbox\Exceptions\DropboxClientException;
 /** @property DropboxApp\ $_dbx  */
 
-class DropBoxModel {
+class DropBoxModel extends Model {
 	private $access_token;
 	private $client_key;
 	private $client_secret;

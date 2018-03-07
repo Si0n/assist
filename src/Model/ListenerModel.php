@@ -9,7 +9,9 @@
 namespace assist\Model;
 
 
-class ListenerModel {
+use assist\Model;
+
+class ListenerModel extends Model {
 	public $callbacks = [];
 	public $index_callback = [];
 

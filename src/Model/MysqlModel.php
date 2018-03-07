@@ -9,7 +9,9 @@
 namespace assist\model;
 
 
-class MysqlModel {
+use assist\Model;
+
+class MysqlModel extends Model {
 
 	protected $db;
 	protected $db_errors = [];

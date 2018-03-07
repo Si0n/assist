@@ -7,11 +7,13 @@
  */
 
 namespace assist\model;
+use assist\Model;
+
 /**
  * Class DirModel
  * @package assist\model
  */
-class DirModel {
+class DirModel extends Model {
 	protected $aliases = [];
 
 	/**
