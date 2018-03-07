@@ -25,12 +25,14 @@ class ListenerModel extends Model {
 		if (is_null($param)) {
 			if (is_callable($callback)) {
 				$this->index_callback = $callback;
+			} elseif (class_exists($callback)) {
+				$this->index_callback = new $callback;
 			}
 		} else {
-			if (is_callable($callback)) {
+			if (is_callable($callback) || class_exists($callback)) {
 				$this->callbacks[md5(is_array($param) ? json_encode($param) : $param)] = [
 					"parameter" => $param,
-					"callback" => $callback,
+					"callback" => is_callable($callback) ? $callback : new $callback,
 					"on_error" => $callback_on_error
 				];
 			}
