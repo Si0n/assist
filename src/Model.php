@@ -13,7 +13,7 @@ namespace assist;
  * @package assist
  */
 class Model {
-	private static $_instance;
+	protected static $_instance;
 	private $_attributes = [];
 
 	/**
