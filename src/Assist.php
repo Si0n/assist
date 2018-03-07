@@ -26,7 +26,7 @@ class Assist {
 				$c = $modelNamespace . $name;
 				/** @var Model $c */
 				if (class_exists($c)) {
-					self::$models[$name] = $c::getInstance($properties);
+					self::$models[$name] = new $c($properties);
 					break;
 				}
 			}

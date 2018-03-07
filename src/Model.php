@@ -13,28 +13,18 @@ namespace assist;
  * @package assist
  */
 class Model {
-	protected static $_instance;
 	private $_attributes = [];
 
 	/**
 	 * Model constructor.
 	 * @param $properties
 	 */
-	private function __construct($properties) {
+	public function __construct($properties) {
 		if (!empty($properties)) {
 			foreach ($properties as $key => $value) {
 				$this->$key = $value;
 			}
 		}
-	}
-
-	/**
-	 * @param null $properties
-	 * @return Model
-	 */
-	public static function getInstance($properties = null) {
-		if (!static::$_instance) static::$_instance = new static($properties);
-		return static::$_instance;
 	}
 
 	/**
@@ -59,8 +49,5 @@ class Model {
 		} else {
 			$this->_attributes[$name] = $value;
 		}
-	}
-
-	final private function __clone() {
 	}
 }
