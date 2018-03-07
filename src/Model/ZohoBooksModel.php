@@ -2,13 +2,14 @@
 
 namespace assist\model;
 
+use assist\Model;
 use GuzzleHttp\Client;
 
 /**
  * Class ZohoComponent
  * @package common\components
  */
-class ZohoBooksModel extends BaseZohoModel {
+class ZohoBooksModel extends Model {
 
 	public function getSalesOrder($order_id) {
 		if ($response = $this->doGetRequest($this->getMethodLink("salesorders", $order_id))) {
